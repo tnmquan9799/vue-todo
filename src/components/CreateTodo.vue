@@ -1,40 +1,25 @@
 <template>
   <div class="ui basic content center aligned segment">
-    <button
-      class="ui basic button icon"
-      v-on:click="openForm"
-      v-show="!isCreating"
-    >
-      <i class="plus icon"></i>
-    </button>
+    <div class="ui animated fade button" tabindex="0" v-on:click="openForm" v-show="!isCreating">
+      <div class="visible content">Up to anything ?</div>
+      <div class="hidden content">
+        <i class="plus icon"></i>
+      </div>
+    </div>
     <div class="ui centered card" v-show="isCreating">
       <div class="content">
         <div class="ui form">
           <div class="field">
             <label>Title</label>
-            <input
-              v-model="titleText"
-              type="text"
-              ref="title"
-              defaultValue=""
-            />
+            <input v-model="titleText" type="text" ref="title" defaultValue />
           </div>
           <div class="field">
             <label>Description</label>
-            <input
-              v-model="descriptionText"
-              type="text"
-              ref="description"
-              defaultValue=""
-            />
+            <input v-model="descriptionText" type="text" ref="description" defaultValue />
           </div>
           <div class="ui two button attached buttons">
-            <button class="ui basic blue button" v-on:click="sendForm()">
-              Create
-            </button>
-            <button class="ui basic red button" v-on:click="closeForm">
-              Cancel
-            </button>
+            <button class="ui basic blue button" v-on:click="sendForm">Create</button>
+            <button class="ui basic red button" v-on:click="closeForm">Cancel</button>
           </div>
         </div>
       </div>

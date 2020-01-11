@@ -1,7 +1,9 @@
 <template class="background">
   <div>
-    <div class="nav-bar"><h1>TODO APP</h1></div>
-    <todo-list v-bind:todos="todos"></todo-list>
+    <div class="nav-bar">
+      <h1>Todo App</h1>
+    </div>
+    <todo-list v-bind:todos="todos" v-on:clear-all="clearAll" v-on:clear-completed="clearCompleted"></todo-list>
     <create-todo v-on:add-todo="addTodo"></create-todo>
   </div>
 </template>
@@ -26,6 +28,12 @@ export default {
   methods: {
     addTodo(newTodo) {
       this.todos.push(newTodo);
+    },
+    clearAll() {
+      this.todos = [];
+    },
+    clearCompleted() {
+      this.todos = this.todos.filter(todo => !todo.done);
     }
   },
 
@@ -57,6 +65,8 @@ export default {
   margin-top: 60px;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
+
 .isDone {
   text-decoration: line-through;
 }
@@ -69,8 +79,18 @@ export default {
 .nav-bar {
   padding: 20px;
   text-align: center;
-  height: 60px;
+  height: 70 px;
   margin-bottom: 15px;
   background: linear-gradient(-90deg, #84cf6a, #16c0b0);
+}
+
+.todo-list {
+  margin: 20px;
+}
+
+h1 {
+  font-size: 35px;
+  font-family: "Lobster", cursive;
+  color: #ffffff;
 }
 </style>

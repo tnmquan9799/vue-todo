@@ -1,13 +1,9 @@
 <template>
-  <div class="ui centered card">
+  <section class="card">
     <div class="content" v-show="!isEditing">
       <div :class="{ isDone: todo.done }" class="content">
-        <div class="header">
-          {{ todo.title }}
-        </div>
-        <div class="meta">
-          {{ todo.description }}
-        </div>
+        <div class="header">{{ todo.title }}</div>
+        <div class="meta">{{ todo.description }}</div>
         <div class="extra content">
           <span class="right floated edit icon" v-on:click="showForm">
             <i class="edit icon"></i>
@@ -31,9 +27,7 @@
           <input type="text" v-model="todo.description" />
         </div>
         <div class="ui two button attached buttons">
-          <button class="ui basic blue button" v-on:click="hideForm">
-            Done !
-          </button>
+          <button class="ui basic blue button" v-on:click="hideForm">Done !</button>
         </div>
       </div>
     </div>
@@ -42,17 +36,13 @@
       class="ui bottom attached green basic button"
       v-show="todo.done"
       v-on:click="completeTodo(todo)"
-    >
-      Completed
-    </div>
+    >Completed</div>
     <div
       class="ui bottom attached red basic button"
       v-show="!todo.done"
       v-on:click="completeTodo(todo)"
-    >
-      Pending
-    </div>
-  </div>
+    >Pending</div>
+  </section>
 </template>
 
 <script type="text/javascript">
