@@ -1,6 +1,11 @@
 <template>
   <div class="ui basic content center aligned segment">
-    <div class="ui animated fade button" tabindex="0" v-on:click="openForm" v-show="!isCreating">
+    <div
+      class="ui animated fade button"
+      tabindex="0"
+      v-on:click="openForm"
+      v-show="!isCreating"
+    >
       <div class="visible content">Up to anything ?</div>
       <div class="hidden content">
         <i class="plus icon"></i>
@@ -15,11 +20,20 @@
           </div>
           <div class="field">
             <label>Description</label>
-            <input v-model="descriptionText" type="text" ref="description" defaultValue />
+            <input
+              v-model="descriptionText"
+              type="text"
+              ref="description"
+              defaultValue
+            />
           </div>
           <div class="ui two button attached buttons">
-            <button class="ui basic blue button" v-on:click="sendForm">Create</button>
-            <button class="ui basic red button" v-on:click="closeForm">Cancel</button>
+            <button class="ui basic blue button" v-on:click="sendForm">
+              Create
+            </button>
+            <button class="ui basic red button" v-on:click="closeForm">
+              Cancel
+            </button>
           </div>
         </div>
       </div>
@@ -28,6 +42,7 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   data() {
     return {
@@ -40,6 +55,11 @@ export default {
     openForm() {
       this.isCreating = true;
     },
+    // formatDate(date) {
+    //   if (date) {
+    //     return moment(String(date)).format("DD-MM-YYYY");
+    //   }
+    // },
     closeForm() {
       this.isCreating = false;
     },
@@ -47,10 +67,8 @@ export default {
       if (this.titleText.length > 0 && this.descriptionText.length > 0) {
         const title = this.titleText;
         const description = this.descriptionText;
-        const createdDate = new Date()
-          .toJSON()
-          .slice(0, 10)
-          .replace(/-/g, "/");
+        let currentDate = new Date();
+        const createdDate = moment(currentDate).format("DD-MM-YYYY");
         let newTodo = {
           title,
           description,
