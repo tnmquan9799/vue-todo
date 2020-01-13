@@ -4,6 +4,9 @@
       <div :class="{ isDone: todo.done }" class="content">
         <div class="header">{{ todo.title }}</div>
         <div class="meta">{{ todo.description }}</div>
+        <div class="meta">
+          <span class="date right floated">{{ todo.createdDate }}</span>
+        </div>
         <div class="extra content">
           <span class="right floated edit icon" v-on:click="showForm">
             <i class="edit icon"></i>

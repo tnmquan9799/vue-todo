@@ -47,10 +47,15 @@ export default {
       if (this.titleText.length > 0 && this.descriptionText.length > 0) {
         const title = this.titleText;
         const description = this.descriptionText;
+        const createdDate = new Date()
+          .toJSON()
+          .slice(0, 10)
+          .replace(/-/g, "/");
         let newTodo = {
           title,
           description,
-          done: false
+          done: false,
+          createdDate
         };
         this.$emit("add-todo", newTodo);
         Swal.fire({
